@@ -4,7 +4,8 @@ import serial
 import time
 import struct
 
-ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600) #Set port, e.g. for Linux '/dev/ttyUSB0', Windows: 'COM3' etc.
+# Set port, e.g. for Linux '/dev/ttyUSB0', Windows: 'COM3' etc.
+ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600) 
 
 ser.flushInput()
 
@@ -72,7 +73,7 @@ def sensor_query_data():
     pm10 = data_unpacked[1]/10
 
     if data[7] == (sum(data[1:7])) % 256:
-        return([pm25, pm10])
+        return [pm25, pm10]
     else:
         print("Checksum is not correct.")
 
